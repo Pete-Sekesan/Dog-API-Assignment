@@ -16,8 +16,7 @@ function getImages(numOfDogImages) {
         else {
             fetch(`https://dog.ceo/api/breeds/image/random/${numOfDogImages}`)
         .then(response => response.json())
-        .then(responseJson => displayImages(responseJson))
-        .catch(error => alert("Something went wrong. Try again later."));
+        .then(responseJson => displayImages(responseJson));
         
  }
     }
@@ -27,7 +26,7 @@ function getImages(numOfDogImages) {
     function displayImages(responseJson){
         console.log(responseJson);
         $('.results').html('');
-        responseJson.message.forEach(render => {
+        responseJson.message.forEach(fetchedImage => {
             $('.results').append(`<img src="${fetchedImage}" class= "results">`);
         });
         //remove hidden class
