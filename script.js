@@ -4,7 +4,8 @@ function getImages(numOfDogImages) {
     if (numOfDogImages < 3){
         fetch(`https://dog.ceo/api/breeds/image/random/3`)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson))
+        .then(responseJson => displayImages(responseJson))
+        .catch(error => alert('Something went wrong. Try again later.'));
         
     }
     //if number asked for is greater than 50, create error and ask for number under 50
@@ -15,10 +16,27 @@ function getImages(numOfDogImages) {
         else {
             fetch(`https://dog.ceo/api/breeds/image/random/${numOfDogImages}`)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson))
+        .then(responseJson => displayImages(responseJson))
+        .catch(error => alert("Something went wrong. Try again later."));
         
  }
     }
+
+    //display images onto the DOM
+
+    function displayImages(responseJson){
+        console.log(responseJson);
+        $('.results').html('');
+        responseJson.message.forEach(render => {
+            $('.results').append(`<img src="${fetchedImage}" class= "results">`);
+        });
+        //remove hidden class
+        $('.results').removeClass('hidden');
+
+    }
+
+   
+
 
 //function to submit form input
 function watchForm(){
