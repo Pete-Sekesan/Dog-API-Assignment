@@ -14,7 +14,11 @@
 <body>
     <div class='container'>
         <h1> Dog Picture Generator </h1>
-        <form>
+        <form id="numSelect">
+            <input type="text" placeholder="Enter Number 3-50" id="numDogs" onfocus="this.placeholder = ''">
+        </form>
+        
+        <form class="submitButton">
             <input type="submit" value="Generate Dog Picture!">
         </form>
         <section class="results hidden">

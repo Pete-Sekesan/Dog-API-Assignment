@@ -1,11 +1,11 @@
 //function to get images from dogAPI
 function getImages(numOfDogImages) {
     //if number of images asked for is less than 3, return 3 by default
-    if (numOfDogs < 3){
-        fetch('https://dog.ceo/api/breeds/image/random/3')
+    if (numOfDogImages < 3){
+        fetch(`https://dog.ceo/api/breeds/image/random/3`)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson()))
-        .catch(error => alert('Oops! Try again Later'));
+        .then(responseJson => console.log(responseJson))
+        
     }
     //if number asked for is greater than 50, create error and ask for number under 50
     else if (numOfDogImages > 50){
@@ -13,18 +13,19 @@ function getImages(numOfDogImages) {
         }
         //return inputted number of dog images
         else {
-            fetch('https://dog.ceo/api/breeds/image/random/${numOfDogs}')
+            fetch(`https://dog.ceo/api/breeds/image/random/${numOfDogImages}`)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson()))
-        .catch(error => alert('Oops! Try again Later'));
+        .then(responseJson => console.log(responseJson))
+        
  }
     }
 
 //function to submit form input
 function watchForm(){
-    $('form').submit( event => {
-        event.preventDefault()
-        getImages()
+    $('.submitButton').submit( event => {
+        event.preventDefault();
+        let enteredNum = $('#numDogs').val();
+        getImages(enteredNum);
     })
 }
 
